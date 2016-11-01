@@ -25,3 +25,4 @@ RUN wget http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-di
     unzip sonar-runner-dist-2.4.zip && \
     rm sonar-runner-dist-2.4.zip
 ENV PATH /usr/local/sonar-runner-2.4/bin:$PATH
+RUN apt-get install zip unzip -y
