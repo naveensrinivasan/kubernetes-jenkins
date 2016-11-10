@@ -17,12 +17,11 @@ RUN wget -O /usr/bin/docker --no-check-certificate https://get.docker.com/builds
 && chmod a+x /usr/bin/docker
 
 RUN curl -fsSL https://github.com/kubernetes/helm/releases/download/v2.0.0-alpha.4/helm-v2.0.0-alpha.4-linux-amd64.tar.gz -o helm.tar.gz && tar -C /usr/local/ -xzf helm.tar.gz
-
-
+RUN apt-get install curl
 
 WORKDIR /usr/local
-RUN wget http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip && \
-    unzip sonar-runner-dist-2.4.zip && \
-    rm sonar-runner-dist-2.4.zip
-ENV PATH /usr/local/sonar-runner-2.4/bin:$PATH
+COPY ./sonar sonar
+ENV PATH /usr/local/sonar/bin:$PATH
 RUN apt-get install zip unzip -y
+
+
