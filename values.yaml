@@ -1,0 +1,30 @@
+# Default values for jenkins.
+# This is a YAML-formatted file.
+# Declare name/value pairs to be passed into your templates.
+# name: value
+
+Master:
+  Name: jenkins-master
+  Image: "gcr.io/kubernetes-charts-ci/jenkins-master-k8s"
+  ImageTag: "v0.2.0"
+  ImagePullPolicy: "Always"
+  Component: "jenkins-master"
+  AdminUser: admin
+# AdminPassword: <defaults to random>
+# Set min/max heap here if needed with:
+# JavaOpts: "-Xms512m -Xmx512m"
+  ServicePort: 8080
+# For minikube, set this to NodePort, elsewhere use LoadBalancer
+  ServiceType: NodePort
+  ContainerPort: 8080
+  SlaveListenerPort: 50000
+
+Agent:
+  Image: quay.io/naveensrinivasan/jnlp-slave 
+  ImageTag: 0.3
+
+Persistence:
+  Enabled: true
+  StorageClass: generic
+  AccessMode: ReadWriteOnce
+  Size: 800Gi
