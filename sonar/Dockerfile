@@ -1,6 +1,8 @@
 FROM sonarqube
 
-MAINTAINER Izzet Mustafaiev "izzet@mustafaiev.com"
+
+MAINTAINER Naveen Srinivasan "nsrinivasan1976@gmail.com"
+
 
 
 #Plugins
